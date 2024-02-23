@@ -38,9 +38,18 @@ function CustomTable({ columns, dataSource }: Props) {
             dataSource.map((row, index) => {
               const rowKeys = Object.keys(row);
               return (
-                <tr key={index} className="border-b border-b-base-300/30">
+                <tr
+                  key={index}
+                  className="border-b border-b-base-300/30 last-of-type:border-none"
+                >
                   {rowKeys.map((key) => {
-                    return (
+                    return key === 'status' ? (
+                      <td key={key} className="px-3 py-4 text-left text-sm">
+                        <div className="max-w-max rounded-md bg-green-100 px-2 py-1 font-medium capitalize text-green-500">
+                          {row[key]}
+                        </div>
+                      </td>
+                    ) : (
                       <td
                         key={key}
                         className="px-3 py-4 text-left text-sm text-base-600"
