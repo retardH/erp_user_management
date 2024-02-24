@@ -58,7 +58,10 @@ function SubmenuSidebar({ isOpen, menuItems }: Props) {
                     {item.childItems &&
                       item.childItems.map((child: any) => {
                         return (
-                          <div className="block px-2 text-base-600">
+                          <div
+                            key={child.label}
+                            className="block px-2 text-base-600"
+                          >
                             <NavLink
                               to={child.route}
                               className={cn(

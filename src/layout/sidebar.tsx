@@ -13,7 +13,7 @@ function Sidebar() {
         <h2 className="mb-6 px-6 text-xl font-bold italic tracking-wide text-primary-800">
           PICOERP
         </h2>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-2">
           {sidebarMenuItems.map((item) => {
             return (
               <div
