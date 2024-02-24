@@ -9,7 +9,7 @@ interface Props {
 }
 function CustomTable({ columns, dataSource }: Props) {
   return (
-    <div className="w-full overflow-x-scroll">
+    <div className="w-full">
       <table className="table w-full">
         <thead>
           <tr className="rounded-sm bg-base-100">
@@ -21,7 +21,7 @@ function CustomTable({ columns, dataSource }: Props) {
                 <React.Fragment key={col}>
                   <th
                     key={col}
-                    className="group min-w-[120px] max-w-max cursor-pointer p-3 text-left font-medium text-base-400"
+                    className="group min-w-[120px] max-w-max cursor-pointer p-3 text-left font-medium capitalize text-base-400"
                   >
                     <div className="flex items-center gap-1">
                       {col}

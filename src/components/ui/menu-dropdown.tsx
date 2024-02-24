@@ -8,10 +8,10 @@ function MenuDropdown() {
     <div>
       <Menu as="div" className="relative inline-block text-left">
         <div>
-          <Menu.Button className="inline-flex w-full justify-center rounded-md bg-base-200 px-4 py-2 text-sm text-base-600 hover:bg-base-400/60 focus:outline-none">
+          <Menu.Button className="inline-flex w-full items-center justify-center rounded-md bg-base-200 px-4 py-2 text-sm text-base-600 hover:bg-base-400/60 focus:outline-none">
             Actions
             <ChevronDownIcon
-              className="-mr-1 ml-2 h-5 w-5 text-base-600"
+              className="mx-1 h-[16px] w-[16px] text-base-600"
               aria-hidden="true"
             />
           </Menu.Button>

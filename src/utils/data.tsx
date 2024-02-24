@@ -35,3 +35,27 @@ export const usersListData = [
     status: 'active',
   },
 ];
+
+export const rolesListData = [
+  {
+    role: 'Admin',
+  },
+  {
+    role: 'Store Keeper',
+  },
+  {
+    role: 'Accountant',
+  },
+  {
+    role: 'Agent',
+  },
+  {
+    role: 'Super Agent',
+  },
+  {
+    role: 'Super Admin',
+  },
+  {
+    role: 'Cashier',
+  },
+];

@@ -33,7 +33,7 @@ function Checkbox({ labelText, id, required }: Props) {
         <div className="ml-2">
           <label
             htmlFor={id || ''}
-            className="cursor-pointer text-sm text-base-800"
+            className="cursor-pointer text-sm text-base-700"
           >
             {labelText}
           </label>

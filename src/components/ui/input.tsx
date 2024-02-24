@@ -2,20 +2,31 @@ import React from 'react';
 import { cn } from '../../utils/helpers';
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
-  icon?: JSX.Element;
+  label?: string;
+  leftIcon?: React.ReactNode;
+  error?: string;
+  id?: string;
 }
-function Input({ icon, ...inputProps }: Props) {
+function Input({ label, id, ...inputProps }: Props) {
   return (
-    <div className="group flex items-center gap-1 rounded-md bg-base-100 px-4 py-2 transition-all focus:bg-base-300">
-      {!!icon && icon}
+    <>
+      {label && (
+        <label htmlFor={id} className="text-sm text-base-700">
+          {label}
+          {inputProps.required && (
+            <span className="mb-1 text-sm text-red-500">*</span>
+          )}
+        </label>
+      )}
       <input
         {...inputProps}
         className={cn(
-          'bg-transparent focus:outline-none focus:ring-0',
+          'mt-1 w-full rounded-md border border-base-400/50 bg-transparent px-2 py-2 text-sm text-base-600 placeholder:text-base-500 focus:border-base-500 focus:outline-none',
           inputProps.className,
         )}
+        id={id}
       />
-    </div>
+    </>
   );
 }
 
