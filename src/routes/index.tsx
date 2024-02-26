@@ -4,6 +4,7 @@ import MainLayout from '../layout';
 import Users from '../pages/users';
 import Roles from '../pages/roles';
 import CreateUser from '../pages/users/create';
+import CreateRole from '../pages/roles/create';
 
 const routes = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const routes = createBrowserRouter([
       {
         path: '/roles',
         element: <Roles />,
+      },
+      {
+        path: '/roles/create',
+        element: <CreateRole />,
       },
     ],
   },
