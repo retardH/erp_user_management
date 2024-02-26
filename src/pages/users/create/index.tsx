@@ -1,3 +1,4 @@
+import PageHeader from '../../../components/shared/page-header';
 import Button from '../../../components/ui/button';
 import Checkbox from '../../../components/ui/checkbox';
 import Input from '../../../components/ui/input';
@@ -20,8 +21,9 @@ const defaultLocation = [{ name: 'No Result Found' }];
 
 function CreateUser() {
   return (
-    <div className="mb-10">
-      <section className="w-full rounded-md bg-white px-6 py-10">
+    <div className="mb-10 w-full">
+      <PageHeader title="Create User Account" />
+      <section className="mt-4 w-full rounded-md bg-white px-6 py-10">
         <h4 className="mb-4 font-medium">User Information</h4>
         <div className="grid grid-cols-3 gap-6">
           <div className="col-span-1">

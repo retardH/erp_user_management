@@ -1,22 +1,22 @@
 import { useLocation } from 'react-router';
 import { NavLink } from 'react-router-dom';
-import { cn } from '../utils/helpers';
+import { cn } from '../../utils/helpers';
+import { Fragment } from 'react';
 
 function Breadcrumb() {
   const { pathname } = useLocation();
   const crumbs = pathname.split('/').filter((c) => c !== '');
-  console.log(crumbs);
   return (
     <div className="flex items-center gap-2">
       {crumbs.map((c, index) => {
         const href = crumbs.slice(0, index + 1).join('/');
         return (
-          <>
+          <Fragment key={c}>
             <NavLink
-              key={c}
-              to={href}
+              replace
+              to={`/${href}`}
               className={cn(
-                'text-sm capitalize text-base-500 hover:text-base-700',
+                'text-sm capitalize text-base-500 hover:text-base-600',
                 `/${href}` === pathname && 'font-medium text-base-700',
               )}
             >
@@ -25,7 +25,7 @@ function Breadcrumb() {
             {index !== crumbs.length - 1 && (
               <span className="text-sm text-base-500">/</span>
             )}
-          </>
+          </Fragment>
         );
       })}
     </div>

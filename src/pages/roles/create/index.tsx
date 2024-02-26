@@ -1,3 +1,4 @@
+import PageHeader from '../../../components/shared/page-header';
 import Button from '../../../components/ui/button';
 import Checkbox from '../../../components/ui/checkbox';
 import Input from '../../../components/ui/input';
@@ -5,8 +6,10 @@ import { rolesPermissions } from '../../../utils/data';
 
 function CreateRole() {
   return (
-    <div className="mb-10">
-      <section className="w-full rounded-md bg-white px-6 py-10">
+    <div className="mb-10 w-full">
+      <PageHeader title="Create New Role" />
+
+      <section className="mt-4 w-full bg-white px-6 py-10">
         <div className="mb-8">
           <Input label="Row Name" placeholder="Enter a role name" required />
         </div>

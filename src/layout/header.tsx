@@ -1,12 +1,12 @@
 import { SunIcon, UserCircleIcon } from '@heroicons/react/24/outline';
 import HoverCard from '../components/ui/hover-card';
-import Breadcrumb from '../components/breadcrumb';
 function Header() {
   return (
-    <header className="mb-6 flex items-center justify-between">
+    <header className="flex items-center justify-between px-6 py-6 lg:px-8">
       <div>
-        <h2 className="mb-1 text-lg font-semibold">Users List</h2>
-        <Breadcrumb />
+        <h2 className="text-xl font-bold italic tracking-wide text-primary-800">
+          PICOERP
+        </h2>
       </div>
       <div className="flex items-center gap-4">
         <HoverCard
