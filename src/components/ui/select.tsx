@@ -10,6 +10,7 @@ interface Props {
   error?: string;
   className?: string;
 }
+
 function Select({ label, data, required }: Props) {
   const [selectedValue, setSelectedValue] = useState<any>(data[0]);
   return (

@@ -1,9 +1,13 @@
 import { SunIcon, UserCircleIcon } from '@heroicons/react/24/outline';
 import HoverCard from '../components/ui/hover-card';
+import Breadcrumb from '../components/breadcrumb';
 function Header() {
   return (
     <header className="mb-6 flex items-center justify-between">
-      <h2 className="text-lg font-semibold">Users List</h2>
+      <div>
+        <h2 className="mb-1 text-lg font-semibold">Users List</h2>
+        <Breadcrumb />
+      </div>
       <div className="flex items-center gap-4">
         <HoverCard
           icon={<SunIcon className="h-[24px] w-[24px] text-inherit" />}
