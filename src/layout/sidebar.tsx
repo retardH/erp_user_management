@@ -8,11 +8,8 @@ function Sidebar() {
   const [activeMenu, setActiveMenu] = useState<string>('');
   const [subMenuItems, setSubMenuItems] = useState<any[]>([]);
   return (
-    <aside className="sticky top-0 flex min-h-[100dvh] max-w-max gap-0">
-      <section className="sticky top-0 z-20 min-h-[100dvh] border-r border-r-base-300/40 bg-white px-2 py-6">
-        <h2 className="mb-6 px-6 text-xl font-bold italic tracking-wide text-primary-800">
-          PICOERP
-        </h2>
+    <aside className="sticky top-0 flex max-w-max gap-0">
+      <section className="sticky top-0 z-20 border-r-base-300/40 px-2 py-6">
         <div className="flex flex-col gap-2">
           {sidebarMenuItems.map((item) => {
             return (

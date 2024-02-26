@@ -3,11 +3,13 @@ import Sidebar from './sidebar';
 import Header from './header';
 function MainLayout() {
   return (
-    <div className="relative flex min-h-[100dvh] bg-base-100">
-      <Sidebar />
-      <div className="max-h-screen flex-1 overflow-scroll p-6">
-        <Header />
-        <Outlet />
+    <div className="h-full bg-base-100">
+      <Header />
+      <div className="relative flex h-full">
+        <Sidebar />
+        <div className="flex-1 pr-2">
+          <Outlet />
+        </div>
       </div>
     </div>
   );

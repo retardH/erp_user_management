@@ -10,7 +10,6 @@ interface Props {
 function SubmenuSidebar({ isOpen, menuItems }: Props) {
   const { pathname } = useLocation();
   const [activeSubMenu, setActiveSubMenu] = useState<string>('');
-  console.log('pathname == ', pathname);
   const activeMenuHandler = (menu: string) => {
     if (activeSubMenu === menu) {
       setActiveSubMenu('');
@@ -21,13 +20,13 @@ function SubmenuSidebar({ isOpen, menuItems }: Props) {
   return (
     <section
       className={cn(
-        'relative min-h-[100dvh] w-0 overflow-hidden bg-white duration-500',
-        isOpen && 'w-[240px]',
+        'relative w-0 overflow-hidden border-l-base-300/40 duration-500',
+        isOpen && 'w-[241px] border-l',
       )}
     >
       <div
         className={cn(
-          'py-6 duration-500',
+          'pb-6 pt-8 duration-500',
           !isOpen && 'pointer-events-none opacity-0',
         )}
       >

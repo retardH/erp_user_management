@@ -1,12 +1,13 @@
 import React from 'react';
 // import Checkbox from './checkbox';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
-import MenuDropdown from './menu-dropdown';
+import MenuDropdown from '../ui/menu-dropdown';
 
 interface Props {
   columns: any[];
   dataSource: any[];
 }
+
 function CustomTable({ columns, dataSource }: Props) {
   return (
     <div className="w-full">
@@ -16,21 +17,22 @@ function CustomTable({ columns, dataSource }: Props) {
             {/* <th className="p-3 text-base-600 font-medium w-[20px]">
               <Checkbox />
             </th> */}
-            {columns.map((col) => {
-              return (
-                <React.Fragment key={col}>
-                  <th
-                    key={col}
-                    className="group min-w-[120px] max-w-max cursor-pointer p-3 text-left font-medium capitalize text-base-400"
-                  >
-                    <div className="flex items-center gap-1">
-                      {col}
-                      <ChevronDownIcon className="h-[14px] w-[14px] text-base-400" />
-                    </div>
-                  </th>
-                </React.Fragment>
-              );
-            })}
+            {columns.length > 0 &&
+              columns.map((col) => {
+                return (
+                  <React.Fragment key={col}>
+                    <th
+                      key={col}
+                      className="group min-w-[120px] max-w-max cursor-pointer p-3 text-left font-medium capitalize text-base-500"
+                    >
+                      <div className="flex items-center gap-1">
+                        {col}
+                        <ChevronDownIcon className="h-[14px] w-[14px] text-base-400" />
+                      </div>
+                    </th>
+                  </React.Fragment>
+                );
+              })}
           </tr>
         </thead>
         <tbody>
