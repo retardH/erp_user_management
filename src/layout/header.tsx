@@ -1,10 +1,23 @@
-import { SunIcon, UserCircleIcon } from '@heroicons/react/24/outline';
+import {
+  SunIcon,
+  UserCircleIcon,
+  Bars3Icon,
+} from '@heroicons/react/24/outline';
 import HoverCard from '../components/ui/hover-card';
-function Header() {
+import React from 'react';
+
+interface Props {
+  setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+function Header({ setSidebarOpen }: Props) {
   return (
-    <header className="flex items-center justify-between px-6 py-4 lg:px-8">
-      <div>
-        <h2 className="text-xl font-bold italic tracking-wide text-primary-800">
+    <header className="flex items-center justify-between bg-base-100 px-6 py-4 lg:px-8">
+      <div className="flex items-center gap-4">
+        <Bars3Icon
+          className="size-[28px] cursor-pointer text-base-600 lg:hidden"
+          onClick={() => setSidebarOpen((open) => !open)}
+        />
+        <h2 className="text-xl font-bold italic tracking-wide text-primary-800 lg:text-2xl">
           PICOERP
         </h2>
       </div>

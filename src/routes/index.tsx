@@ -5,6 +5,7 @@ import Users from '../pages/users';
 import Roles from '../pages/roles';
 import CreateUser from '../pages/users/create';
 import CreateRole from '../pages/roles/create';
+import Login from '../pages/login';
 
 const routes = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const routes = createBrowserRouter([
         element: <CreateRole />,
       },
     ],
+  },
+  {
+    path: '/login',
+    element: <Login />,
   },
 ]);
 

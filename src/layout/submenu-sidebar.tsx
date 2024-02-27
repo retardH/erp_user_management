@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { cn } from '../utils/helpers';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
 import { NavLink, useLocation } from 'react-router-dom';
@@ -6,8 +6,9 @@ import { NavLink, useLocation } from 'react-router-dom';
 interface Props {
   isOpen: boolean;
   menuItems: any[];
+  setSideBarOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
-function SubmenuSidebar({ isOpen, menuItems }: Props) {
+function SubmenuSidebar({ isOpen, menuItems, setSideBarOpen }: Props) {
   const { pathname } = useLocation();
   const [activeSubMenu, setActiveSubMenu] = useState<string>('');
   const [activeSubMenuItemsId, setActiveSubMenuItemsId] = useState<string>('');
@@ -23,7 +24,7 @@ function SubmenuSidebar({ isOpen, menuItems }: Props) {
     <section
       className={cn(
         'relative w-0 overflow-hidden border-l-base-300/40 duration-500',
-        isOpen && 'w-[241px] border-l',
+        isOpen ? 'w-[200px] border-l' : '',
       )}
     >
       <div
@@ -70,6 +71,7 @@ function SubmenuSidebar({ isOpen, menuItems }: Props) {
                           >
                             <NavLink
                               to={child.route}
+                              onClick={() => setSideBarOpen(false)}
                               className={cn(
                                 child.route === pathname && 'text-primary-600',
                               )}
