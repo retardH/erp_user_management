@@ -1,5 +1,9 @@
 import Button from '../ui/button';
-import { FunnelIcon, DocumentArrowUpIcon } from '@heroicons/react/24/outline';
+import {
+  FunnelIcon,
+  DocumentArrowUpIcon,
+  MagnifyingGlassIcon,
+} from '@heroicons/react/24/outline';
 import Input from '../ui/input';
 
 interface Props {
@@ -9,7 +13,10 @@ function TableFilter({ title }: Props) {
   return (
     <div className="flex items-center justify-between">
       <div className="md:w-[300px]">
-        <Input placeholder={`Search ${title}`} />
+        <Input
+          placeholder={`Search ${title}`}
+          leftIcon={<MagnifyingGlassIcon className="size-[18px]" />}
+        />
       </div>
       <div className="flex items-center gap-4">
         <Button variant="outline" className="group">
