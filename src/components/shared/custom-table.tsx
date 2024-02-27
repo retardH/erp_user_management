@@ -14,9 +14,6 @@ function CustomTable({ columns, dataSource }: Props) {
       <table className="table w-full">
         <thead>
           <tr className="rounded-sm bg-base-100">
-            {/* <th className="p-3 text-base-600 font-medium w-[20px]">
-              <Checkbox />
-            </th> */}
             {columns.length > 0 &&
               columns.map((col) => {
                 return (
