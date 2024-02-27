@@ -10,7 +10,7 @@ interface Props {
 
 function CustomTable({ columns, dataSource }: Props) {
   return (
-    <div className="w-full">
+    <div className="w-full overflow-x-scroll">
       <table className="table w-full">
         <thead>
           <tr className="rounded-sm bg-base-100">

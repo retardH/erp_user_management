@@ -21,7 +21,7 @@ const defaultLocation = [{ name: 'No Result Found' }];
 
 function CreateUser() {
   return (
-    <div className="mb-10 w-full">
+    <div className="mb-10 w-full p-6 lg:p-0">
       <PageHeader title="Create User Account" />
       <section className="mt-4 w-full rounded-md bg-white px-6 py-10">
         <h4 className="mb-4 font-medium">User Information</h4>
