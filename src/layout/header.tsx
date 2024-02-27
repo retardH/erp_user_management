@@ -2,7 +2,7 @@ import { SunIcon, UserCircleIcon } from '@heroicons/react/24/outline';
 import HoverCard from '../components/ui/hover-card';
 function Header() {
   return (
-    <header className="flex items-center justify-between px-6 py-6 lg:px-8">
+    <header className="flex items-center justify-between px-6 py-4 lg:px-8">
       <div>
         <h2 className="text-xl font-bold italic tracking-wide text-primary-800">
           PICOERP

@@ -9,7 +9,7 @@ function Sidebar() {
   const [subMenuItems, setSubMenuItems] = useState<any[]>([]);
   return (
     <aside className="sticky top-0 flex max-w-max gap-0">
-      <section className="sticky top-0 z-20 border-r-base-300/40 px-2 py-6">
+      <section className="sticky top-0 z-20 border-r-base-300/40 px-2">
         <div className="flex flex-col gap-2">
           {sidebarMenuItems.map((item) => {
             return (

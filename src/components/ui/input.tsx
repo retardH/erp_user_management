@@ -7,7 +7,7 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   error?: string;
   id?: string;
 }
-function Input({ label, id, ...inputProps }: Props) {
+function Input({ label, id, leftIcon, ...inputProps }: Props) {
   return (
     <>
       {label && (
@@ -18,14 +18,22 @@ function Input({ label, id, ...inputProps }: Props) {
           )}
         </label>
       )}
-      <input
-        {...inputProps}
-        className={cn(
-          'mt-1 w-full rounded-md border border-base-400/50 bg-transparent px-2 py-2 text-sm text-base-600 placeholder:text-base-500 focus:border-base-500 focus:outline-none',
-          inputProps.className,
+      <div className="relative w-full overflow-hidden">
+        {leftIcon && (
+          <div className="absolute inset-y-0 left-1 inline-flex items-center justify-center pl-2 pt-[2px] text-base-600">
+            {leftIcon}
+          </div>
         )}
-        id={id}
-      />
+        <input
+          {...inputProps}
+          className={cn(
+            'mt-1 w-full rounded-md border border-base-400/50 bg-transparent px-2 py-2 text-sm text-base-600 placeholder:text-base-500 focus:border-base-500 focus:outline-none',
+            leftIcon && 'pl-8',
+            inputProps.className,
+          )}
+          id={id}
+        />
+      </div>
     </>
   );
 }

@@ -47,4 +47,26 @@ export const sidebarMenuItems = [
       },
     ],
   },
+  {
+    label: 'Products',
+    title: 'Products',
+    icon: <HomeIcon className="h-[20px] w-[20px] text-inherit" />,
+    subMenu: [
+      {
+        label: 'Products Lists',
+        route: '/',
+      },
+    ],
+  },
+  {
+    label: 'Contact',
+    title: 'Contact',
+    icon: <HomeIcon className="h-[20px] w-[20px] text-inherit" />,
+    subMenu: [
+      {
+        label: 'Contact Lists',
+        route: '/',
+      },
+    ],
+  },
 ];

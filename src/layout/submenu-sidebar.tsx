@@ -10,11 +10,13 @@ interface Props {
 function SubmenuSidebar({ isOpen, menuItems }: Props) {
   const { pathname } = useLocation();
   const [activeSubMenu, setActiveSubMenu] = useState<string>('');
+  const [activeSubMenuItemsId, setActiveSubMenuItemsId] = useState<string>('');
   const activeMenuHandler = (menu: string) => {
     if (activeSubMenu === menu) {
-      setActiveSubMenu('');
+      setActiveSubMenuItemsId((prev) => (prev !== '' ? '' : menu));
       return;
     }
+    setActiveSubMenuItemsId(menu);
     setActiveSubMenu(menu);
   };
   return (
@@ -26,7 +28,7 @@ function SubmenuSidebar({ isOpen, menuItems }: Props) {
     >
       <div
         className={cn(
-          'pb-6 pt-8 duration-500',
+          'py-2 duration-500',
           !isOpen && 'pointer-events-none opacity-0',
         )}
       >
@@ -43,12 +45,17 @@ function SubmenuSidebar({ isOpen, menuItems }: Props) {
                   onClick={() => activeMenuHandler(item.label)}
                 >
                   <span className="text-inherit">{item.label}</span>
-                  <ChevronDownIcon className="h-[20px] w-[20px] text-inherit" />
+                  <ChevronDownIcon
+                    className={cn(
+                      'h-[20px] w-[20px] -rotate-90 text-inherit transition-all duration-500',
+                      activeSubMenuItemsId === item.label && 'rotate-0',
+                    )}
+                  />
                 </div>
                 <div
                   className={cn(
                     'max-h-0 overflow-hidden transition-all duration-500',
-                    activeSubMenu === item.label
+                    activeSubMenuItemsId === item.label
                       ? 'mt-2 max-h-[200px]'
                       : 'duration-300',
                   )}
