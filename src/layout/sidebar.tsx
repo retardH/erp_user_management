@@ -31,7 +31,7 @@ function Sidebar({ isOpen, setIsOpen }: Props) {
                 <div
                   key={item.label}
                   className={cn(
-                    'flex cursor-pointer items-start gap-2 rounded-md px-6 py-2',
+                    'flex cursor-pointer items-center gap-2 rounded-md px-6 py-2',
                     activeMenu === item.label &&
                       'bg-primary-100 text-primary-500',
                   )}
@@ -42,14 +42,14 @@ function Sidebar({ isOpen, setIsOpen }: Props) {
                   }}
                 >
                   <div className="text-inherit">{item.icon}</div>{' '}
-                  <span
+                  <div
                     className={cn(
-                      'text-base',
+                      'align-bottom text-sm lg:text-base',
                       activeMenu === item.label && 'text-primary-500',
                     )}
                   >
                     {item.label}
-                  </span>
+                  </div>
                 </div>
               );
             })}

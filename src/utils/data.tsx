@@ -1,4 +1,6 @@
-export const usersListData = [
+import type { RoleData, UserData } from './types';
+
+export const usersListData: UserData[] = [
   {
     name: 'HtetZarni',
     role: 'Admin',
@@ -36,7 +38,7 @@ export const usersListData = [
   },
 ];
 
-export const rolesListData = [
+export const rolesListData: RoleData[] = [
   {
     role: 'Admin',
   },

@@ -40,7 +40,7 @@ function SubmenuSidebar({ isOpen, menuItems, setSideBarOpen }: Props) {
               <div key={item.label} className="block">
                 <div
                   className={cn(
-                    'group flex cursor-pointer items-center  justify-between text-base-600',
+                    'group flex cursor-pointer items-center justify-between text-sm text-base-600 lg:text-base',
                     activeSubMenu === item.label && 'text-primary-600',
                   )}
                   onClick={() => activeMenuHandler(item.label)}
@@ -73,6 +73,7 @@ function SubmenuSidebar({ isOpen, menuItems, setSideBarOpen }: Props) {
                               to={child.route}
                               onClick={() => setSideBarOpen(false)}
                               className={cn(
+                                'text-sm lg:text-base',
                                 child.route === pathname && 'text-primary-600',
                               )}
                             >
