@@ -11,13 +11,13 @@ interface Props {
 }
 function Header({ setSidebarOpen }: Props) {
   return (
-    <header className="flex items-center justify-between bg-base-100 px-6 py-4 lg:px-8">
+    <header className="flex items-center justify-between bg-base-100 px-4 py-4 md:px-6 lg:px-8">
       <div className="flex items-center gap-4">
         <Bars3Icon
           className="size-[28px] cursor-pointer text-base-600 lg:hidden"
           onClick={() => setSidebarOpen((open) => !open)}
         />
-        <h2 className="text-xl font-bold italic tracking-wide text-primary-800 lg:text-2xl">
+        <h2 className="text-xl font-bold tracking-wide text-primary-800 lg:text-2xl">
           PICOERP
         </h2>
       </div>

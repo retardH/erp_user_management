@@ -6,7 +6,7 @@ interface Props {
 function PageHeader({ title }: Props) {
   return (
     <div>
-      <h2 className="mb-1 text-lg font-medium">{title}</h2>
+      <h2 className="text-base font-medium md:text-lg">{title}</h2>
       <Breadcrumb />
     </div>
   );

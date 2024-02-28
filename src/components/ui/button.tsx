@@ -9,7 +9,7 @@ function Button({ variant = 'primary', children, ...buttonProps }: Props) {
     <button
       {...buttonProps}
       className={cn(
-        'flex items-center justify-center gap-1.5 rounded-md px-5 py-2 text-center text-sm text-white transition-all',
+        'box-border flex items-center justify-center gap-1.5 rounded-md px-3 py-1.5 text-center text-sm text-white transition-all md:px-5 md:py-2',
         buttonProps.className,
         variant === 'primary' &&
           'border border-primary-500 bg-primary-500 hover:bg-primary-700',
