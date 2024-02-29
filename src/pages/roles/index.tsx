@@ -26,17 +26,15 @@ function Roles() {
     },
   ];
   return (
-    <section className="w-full bg-white p-6">
+    <section className="w-full rounded-md bg-white p-4 lg:p-6">
       <PageHeader title="Role Lists" />
-      <div className="mt-4 rounded-md border border-base-300/40 p-4">
+      <div className="mt-4 rounded-md border border-base-300/40 p-3 lg:p-6">
         <TableFilter title="Role" />
         <div className="mt-6">
-          {/* 
-            <CustomTable
-              columns={[...Object.keys(rolesListData[0]), 'Actions']}
-              dataSource={rolesListData}
-            /> 
-          */}
+          {/* <CustomTable
+            columns={[...Object.keys(rolesListData[0]), 'Actions']}
+            dataSource={rolesListData}
+          /> */}
           <CustomDataTable columns={columns} data={rolesListData} />
         </div>
         <div className="my-2 flex items-center justify-end">

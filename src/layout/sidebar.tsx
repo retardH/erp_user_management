@@ -20,7 +20,7 @@ function Sidebar({ isOpen, setIsOpen }: Props) {
     <>
       <aside
         className={cn(
-          'fixed top-0 z-50 flex h-screen max-w-max gap-0 bg-white py-6 transition-all duration-300 lg:static lg:left-0 lg:h-auto lg:bg-transparent lg:p-0',
+          'fixed top-0 z-50 flex h-screen max-w-max gap-0 bg-white py-4 transition-all duration-300 sm:py-6 lg:static lg:left-0 lg:h-auto lg:bg-transparent lg:p-0',
           isOpen ? 'left-0' : '-left-[90%]',
         )}
       >
@@ -31,7 +31,7 @@ function Sidebar({ isOpen, setIsOpen }: Props) {
                 <div
                   key={item.label}
                   className={cn(
-                    'flex cursor-pointer items-center gap-2 rounded-md px-6 py-2',
+                    'flex cursor-pointer items-center gap-2 rounded-md px-4 py-2 text-base-700 sm:px-6',
                     activeMenu === item.label &&
                       'bg-primary-100 text-primary-500',
                   )}
@@ -44,7 +44,7 @@ function Sidebar({ isOpen, setIsOpen }: Props) {
                   <div className="text-inherit">{item.icon}</div>{' '}
                   <div
                     className={cn(
-                      'align-bottom text-sm lg:text-base',
+                      'align-bottom text-sm text-base-700 lg:text-base',
                       activeMenu === item.label && 'text-primary-500',
                     )}
                   >

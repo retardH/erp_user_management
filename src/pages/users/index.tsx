@@ -52,19 +52,19 @@ function Users() {
     },
   ];
   return (
-    <section className="w-full bg-white p-6">
+    <section className="rounded-md bg-white p-4 lg:p-6">
       <PageHeader title="User Lists" />
-      <div className="mt-4 rounded-md border border-base-300/40 p-4">
-        <TableFilter title="User" />
-        <div className="mt-6">
-          {/* 
+      <div className="mt-4 rounded-md border border-base-300/40 p-3 lg:p-6">
+        <div className="mb-6">
+          <TableFilter title="User" />
+        </div>
+        {/* 
             <CustomTable
               columns={[...Object.keys(usersListData[0]), 'Actions']}
               dataSource={usersListData}
             /> 
           */}
-          <CustomDataTable columns={columns} data={usersListData} />
-        </div>
+        <CustomDataTable columns={columns} data={usersListData} />
         <div className="my-2 flex items-center justify-end">
           <TablePagination />
         </div>

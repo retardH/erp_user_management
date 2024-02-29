@@ -24,7 +24,7 @@ function SubmenuSidebar({ isOpen, menuItems, setSideBarOpen }: Props) {
     <section
       className={cn(
         'relative w-0 overflow-hidden border-l-base-300/40 duration-500',
-        isOpen ? 'w-[200px] border-l' : '',
+        isOpen ? 'w-[150px] border-l sm:w-[200px]' : '',
       )}
     >
       <div
@@ -33,8 +33,7 @@ function SubmenuSidebar({ isOpen, menuItems, setSideBarOpen }: Props) {
           !isOpen && 'pointer-events-none opacity-0',
         )}
       >
-        {/* <h4 className="uppercase px-6 mb-6">Users Management</h4> */}
-        <div className="flex flex-col gap-4 px-6">
+        <div className="flex flex-col gap-2 px-3 sm:px-6">
           {menuItems.map((item) => {
             return (
               <div key={item.label} className="block">
@@ -48,7 +47,7 @@ function SubmenuSidebar({ isOpen, menuItems, setSideBarOpen }: Props) {
                   <span className="text-inherit">{item.label}</span>
                   <ChevronDownIcon
                     className={cn(
-                      'h-[20px] w-[20px] -rotate-90 text-inherit transition-all duration-500',
+                      'size-[16px] -rotate-90 text-inherit transition-all duration-500',
                       activeSubMenuItemsId === item.label && 'rotate-0',
                     )}
                   />
@@ -57,11 +56,11 @@ function SubmenuSidebar({ isOpen, menuItems, setSideBarOpen }: Props) {
                   className={cn(
                     'max-h-0 overflow-hidden transition-all duration-500',
                     activeSubMenuItemsId === item.label
-                      ? 'mt-2 max-h-[200px]'
+                      ? 'mt-0.5 max-h-[200px]'
                       : 'duration-300',
                   )}
                 >
-                  <div className="flex h-full w-full flex-col gap-2.5">
+                  <div className="flex h-full w-full flex-col gap-1">
                     {item.childItems &&
                       item.childItems.map((child: any) => {
                         return (

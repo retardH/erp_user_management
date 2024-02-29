@@ -5,11 +5,11 @@ import { useState } from 'react';
 function MainLayout() {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
   return (
-    <div className="h-full bg-base-100">
+    <div className="relative bg-base-100">
       <Header setSidebarOpen={setSidebarOpen} />
-      <div className="relative flex h-full">
+      <div className="h-full lg:flex">
         <Sidebar isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />
-        <div className="flex-1 pr-2">
+        <div className="flex-1 pr-0 lg:pr-4">
           <Outlet />
         </div>
       </div>

@@ -29,16 +29,16 @@ function CustomDataTable<TData, TValue>({
     },
   });
   return (
-    <div className="w-full overflow-x-scroll">
+    <div className="customize__scroll m-auto flex w-full flex-col">
       <table className="table w-full">
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
-            <tr key={headerGroup.id} className="rounded-sm bg-base-100">
+            <tr key={headerGroup.id} className="rounded-sm bg-base-100/80">
               {headerGroup.headers.map((header) => {
                 return (
                   <th
                     key={header.id}
-                    className="group min-w-[120px] max-w-max cursor-pointer p-3 text-left font-medium capitalize text-base-500"
+                    className="group min-w-[130px] cursor-pointer p-3 text-left text-sm font-medium capitalize text-base-500 md:text-base"
                   >
                     {!header.isPlaceholder &&
                       flexRender(
