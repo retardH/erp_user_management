@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { cn } from '../utils/helpers';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
 import { NavLink, useLocation } from 'react-router-dom';
+import { cn } from '@/utils/helpers';
 
 interface Props {
   isOpen: boolean;
   menuItems: any[];
   setSideBarOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
 function SubmenuSidebar({ isOpen, menuItems, setSideBarOpen }: Props) {
   const { pathname } = useLocation();
   const [activeSubMenu, setActiveSubMenu] = useState<string>('');
@@ -20,6 +21,7 @@ function SubmenuSidebar({ isOpen, menuItems, setSideBarOpen }: Props) {
     setActiveSubMenuItemsId(menu);
     setActiveSubMenu(menu);
   };
+
   return (
     <section
       className={cn(
@@ -54,9 +56,9 @@ function SubmenuSidebar({ isOpen, menuItems, setSideBarOpen }: Props) {
                 </div>
                 <div
                   className={cn(
-                    'max-h-0 overflow-hidden transition-all duration-500',
+                    'mt-1 max-h-0 overflow-hidden transition-all duration-500',
                     activeSubMenuItemsId === item.label
-                      ? 'mt-0.5 max-h-[200px]'
+                      ? 'max-h-[200px]'
                       : 'duration-300',
                   )}
                 >

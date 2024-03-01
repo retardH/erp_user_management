@@ -1,8 +1,8 @@
-import PageHeader from '../../../components/shared/page-header';
-import Button from '../../../components/ui/button';
-import Checkbox from '../../../components/ui/checkbox';
-import Input from '../../../components/ui/input';
-import { rolesPermissions } from '../../../utils/data';
+import PageHeader from '@/components/shared/page-header';
+import Button from '@/components/ui/button';
+import Checkbox from '@/components/ui/checkbox';
+import Input from '@/components/ui/input';
+import { rolesPermissions } from '@/utils/data';
 
 function CreateRole() {
   return (
@@ -27,8 +27,8 @@ function CreateRole() {
                 </label>
                 <div className="flex items-center gap-4">
                   <Checkbox labelText="All" />
-                  {role.permissions.map((p) => (
-                    <Checkbox key={p} labelText={p} />
+                  {role.permissions.map((permission) => (
+                    <Checkbox key={permission} labelText={permission} />
                   ))}
                 </div>
               </div>

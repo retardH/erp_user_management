@@ -1,7 +1,10 @@
 export type UserData = {
-  name: string;
+  firstName: string;
+  lastName?: string;
+  username: string;
+  email: string;
   role: string;
-  status: string;
+  isActive: boolean;
 };
 
 export type RoleData = {

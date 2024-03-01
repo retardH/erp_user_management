@@ -1,13 +1,19 @@
-import PageHeader from '../../components/shared/page-header';
-import TableFilter from '../../components/shared/table-filter';
-import TablePagination from '../../components/shared/table-pagination';
-import { rolesListData } from '../../utils/data';
+import PageHeader from '@/components/shared/page-header';
+import Button from '@/components/ui/button';
+import { rolesListData } from '@/utils/data';
+import { RoleData } from '@/utils/types';
 import { ColumnDef } from '@tanstack/react-table';
-import { RoleData } from '../../utils/types';
-import MenuDropdown from '../../components/ui/menu-dropdown';
-import CustomDataTable from '../../components/shared/custom-data-table';
+import RolesDataTable from './data-table';
+import { useState } from 'react';
+import DeleteModal from '@/components/shared/delete-modal';
 
 function Roles() {
+  const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false);
+  // const [roleIdToDelete, setRoleIdToDelete] = useState<string>('');
+
+  const closeDeleteModal = () => setShowDeleteModal(false);
+  const handleDeleteRole = () => {};
+
   const columns: ColumnDef<RoleData>[] = [
     {
       header: 'Role Name',
@@ -18,29 +24,26 @@ function Roles() {
       id: 'Actions',
       cell: () => {
         return (
-          <div className="max-w-max">
-            <MenuDropdown />
+          <div className="flex items-center gap-4">
+            <Button variant="danger">Delete</Button>
           </div>
         );
       },
     },
   ];
+
   return (
     <section className="w-full rounded-md bg-white p-4 lg:p-6">
       <PageHeader title="Role Lists" />
       <div className="mt-4 rounded-md border border-base-300/40 p-3 lg:p-6">
-        <TableFilter title="Role" />
-        <div className="mt-6">
-          {/* <CustomTable
-            columns={[...Object.keys(rolesListData[0]), 'Actions']}
-            dataSource={rolesListData}
-          /> */}
-          <CustomDataTable columns={columns} data={rolesListData} />
-        </div>
-        <div className="my-2 flex items-center justify-end">
-          <TablePagination />
-        </div>
+        <RolesDataTable columns={columns} data={rolesListData} />
       </div>
+      <DeleteModal
+        show={showDeleteModal}
+        onClose={closeDeleteModal}
+        onOk={handleDeleteRole}
+        description="This action cannot be undone. Are you sure you want to permanently delete this user?"
+      />
     </section>
   );
 }

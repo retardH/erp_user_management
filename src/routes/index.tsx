@@ -1,10 +1,10 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Home from '../pages/home';
-import MainLayout from '../layout';
+import MainLayout from '../components/layout';
 import Users from '../pages/users';
 import Roles from '../pages/roles';
-import CreateUser from '../pages/users/create';
-import CreateRole from '../pages/roles/create';
+import CreateUser from '../pages/create-user';
+import CreateRole from '../pages/create-role';
 import Login from '../pages/login';
 
 const routes = createBrowserRouter([
