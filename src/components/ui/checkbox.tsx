@@ -1,6 +1,5 @@
 import { CheckIcon } from '@heroicons/react/24/outline';
 import { cn } from '../../utils/helpers';
-import { useState } from 'react';
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   labelText?: string;
@@ -8,7 +7,7 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   required?: boolean;
 }
 function Checkbox({ labelText, id, required, ...inputProps }: Props) {
-  const [checked, setChecked] = useState<boolean>(false);
+  // const [checked, setChecked] = useState<boolean>(false);
   return (
     <div className="flex items-center">
       <div className="relative h-5 w-5 cursor-pointer overflow-hidden rounded-sm">
