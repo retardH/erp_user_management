@@ -1,9 +1,4 @@
-import {
-  HomeIcon,
-  UsersIcon,
-  ShoppingBagIcon,
-  IdentificationIcon,
-} from '@heroicons/react/24/solid';
+import { HomeIcon, UsersIcon } from '@heroicons/react/24/solid';
 
 export const sidebarMenuItems = [
   {
@@ -49,28 +44,6 @@ export const sidebarMenuItems = [
             route: '/roles/create',
           },
         ],
-      },
-    ],
-  },
-  {
-    label: 'Products',
-    title: 'Products',
-    icon: <ShoppingBagIcon className="h-[20px] w-[20px] text-inherit" />,
-    subMenu: [
-      {
-        label: 'Products Lists',
-        route: '/',
-      },
-    ],
-  },
-  {
-    label: 'Contact',
-    title: 'Contact',
-    icon: <IdentificationIcon className="h-[20px] w-[20px] text-inherit" />,
-    subMenu: [
-      {
-        label: 'Contact Lists',
-        route: '/',
       },
     ],
   },

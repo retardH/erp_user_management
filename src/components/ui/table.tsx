@@ -1,39 +1,18 @@
-import {
-  flexRender,
-  getCoreRowModel,
-  useReactTable,
-  ColumnDef,
-  SortingState,
-  getSortedRowModel,
-} from '@tanstack/react-table';
-import { useState } from 'react';
+import { Table, flexRender } from '@tanstack/react-table';
 
-interface Props<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[];
-  data: TData[];
+interface Props<TData> {
+  table: Table<TData>;
 }
-
-function CustomDataTable<TData, TValue>({
-  columns,
-  data,
-}: Props<TData, TValue>) {
-  const [sorting, setSorting] = useState<SortingState>([]);
-  const table = useReactTable({
-    columns,
-    data,
-    getCoreRowModel: getCoreRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    onSortingChange: setSorting,
-    state: {
-      sorting,
-    },
-  });
+function CommonTable<TData>({ table }: Props<TData>) {
   return (
     <div className="customize__scroll m-auto flex w-full flex-col">
       <table className="table w-full">
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
-            <tr key={headerGroup.id} className="rounded-sm bg-base-100/80">
+            <tr
+              key={headerGroup.id}
+              className="rounded-sm border-b border-b-base-300/50"
+            >
               {headerGroup.headers.map((header) => {
                 return (
                   <th
@@ -52,11 +31,11 @@ function CustomDataTable<TData, TValue>({
           ))}
         </thead>
         <tbody>
-          {table.getRowModel().rows?.length &&
+          {table.getRowModel().rows?.length > 0 ? (
             table.getRowModel().rows.map((row) => (
               <tr
                 key={row.id}
-                className="border-b border-b-base-300/30 last-of-type:border-none"
+                className="h-[69px] border-b border-b-base-300/30 transition-all last-of-type:border-none hover:bg-base-100"
               >
                 {row.getVisibleCells().map((cell) => (
                   <td
@@ -67,11 +46,21 @@ function CustomDataTable<TData, TValue>({
                   </td>
                 ))}
               </tr>
-            ))}
+            ))
+          ) : (
+            <tr>
+              <td
+                colSpan={5}
+                className="px-3 py-5 text-center font-medium text-base-600"
+              >
+                No Data
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
     </div>
   );
 }
 
-export default CustomDataTable;
+export default CommonTable;

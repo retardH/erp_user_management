@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router';
 import { NavLink } from 'react-router-dom';
-import { cn } from '../../utils/helpers';
 import { Fragment } from 'react';
+import { cn } from '@/utils/helpers';
 
 function Breadcrumb() {
   const { pathname } = useLocation();

@@ -3,8 +3,8 @@ import {
   UserCircleIcon,
   Bars3Icon,
 } from '@heroicons/react/24/outline';
-import HoverCard from '../components/ui/hover-card';
 import React from 'react';
+import HoverCard from '../ui/hover-card';
 
 interface Props {
   setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;

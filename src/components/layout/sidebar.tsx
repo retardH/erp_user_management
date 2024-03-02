@@ -1,7 +1,7 @@
+import { sidebarMenuItems } from '@/utils/constants';
+import { cn } from '@/utils/helpers';
 import React, { useState } from 'react';
-import { sidebarMenuItems } from '../utils/constants';
 import SubmenuSidebar from './submenu-sidebar';
-import { cn } from '../utils/helpers';
 
 interface Props {
   isOpen: boolean;
@@ -20,8 +20,8 @@ function Sidebar({ isOpen, setIsOpen }: Props) {
     <>
       <aside
         className={cn(
-          'fixed top-0 z-50 flex h-screen max-w-max gap-0 bg-white py-4 transition-all duration-300 sm:py-6 lg:static lg:left-0 lg:h-auto lg:bg-transparent lg:p-0',
-          isOpen ? 'left-0' : '-left-[90%]',
+          'fixed top-0 flex h-screen max-w-max gap-0 bg-white py-4 transition-all duration-300 sm:py-6 lg:static lg:left-0 lg:h-auto lg:bg-transparent lg:p-0',
+          isOpen ? 'left-0 z-40' : '-left-[90%]',
         )}
       >
         <section className="z-20 border-r-base-300/40 px-2">
