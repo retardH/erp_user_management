@@ -1,9 +1,9 @@
 import { Table, flexRender } from '@tanstack/react-table';
 
-interface Props {
-  table: Table<any>;
+interface Props<TData> {
+  table: Table<TData>;
 }
-function CommonTable({ table }: Props) {
+function CommonTable<TData>({ table }: Props<TData>) {
   return (
     <div className="customize__scroll m-auto flex w-full flex-col">
       <table className="table w-full">
@@ -35,7 +35,7 @@ function CommonTable({ table }: Props) {
             table.getRowModel().rows.map((row) => (
               <tr
                 key={row.id}
-                className="border-b border-b-base-300/30 transition-all last-of-type:border-none hover:bg-base-100"
+                className="h-[69px] border-b border-b-base-300/30 transition-all last-of-type:border-none hover:bg-base-100"
               >
                 {row.getVisibleCells().map((cell) => (
                   <td

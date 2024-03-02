@@ -1,25 +1,31 @@
 import { ColumnDef } from '@tanstack/react-table';
 import { ChevronUpIcon } from '@heroicons/react/24/outline';
-import { UserData } from '@/utils/types';
+import { User } from '@/utils/types';
 import { cn } from '@/utils/helpers';
 import Button from '@/components/ui/button';
-import { useUserContext } from '@/contexts/users';
 import DeleteModal from '@/components/shared/delete-modal';
 import { useState } from 'react';
 import UsersDataTable from './data-table';
 import PageHeader from '@/components/shared/page-header';
+import { useDeleteUser, useUsers } from '@/services/api/users';
 
 function Users() {
+  const { data: usersData, isLoading, mutate: getUsers } = useUsers();
+  const { trigger: deleteUser } = useDeleteUser();
   const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false);
-  const [userIdToDelete, setUserIdToDelete] = useState('');
-  const { users, deleteUser } = useUserContext();
+  const [userIdToDelete, setUserIdToDelete] = useState<number>(0);
 
   const closeDeleteModal = () => setShowDeleteModal(false);
+
   const handleDeleteUser = () => {
-    deleteUser(userIdToDelete);
+    deleteUser(userIdToDelete, {
+      onSuccess: () => {
+        getUsers();
+      },
+    });
   };
 
-  const columns: ColumnDef<UserData>[] = [
+  const columns: ColumnDef<User>[] = [
     {
       accessorKey: 'username',
       header: ({ column }) => {
@@ -40,7 +46,10 @@ function Users() {
     },
     {
       header: 'Role',
-      accessorKey: 'role',
+      accessorKey: 'roles',
+      cell: ({ row }) => {
+        return <div>{row.original.roles?.name}</div>;
+      },
     },
     {
       header: 'Status',
@@ -64,6 +73,7 @@ function Users() {
       header: 'Actions',
       id: 'Actions',
       cell: ({ row }) => {
+        const userId = row.original.id;
         return (
           <div className="flex items-center gap-4">
             <Button variant="outline">Edit</Button>
@@ -71,7 +81,7 @@ function Users() {
               variant="danger"
               onClick={() => {
                 setShowDeleteModal(true);
-                setUserIdToDelete(row.getValue('username'));
+                setUserIdToDelete(userId);
               }}
             >
               Delete
@@ -81,11 +91,16 @@ function Users() {
       },
     },
   ];
+
   return (
     <section className="rounded-md bg-white p-4 lg:p-6">
       <PageHeader title="User Lists" />
       <div className="mt-4 rounded-md border border-base-300/40 p-3 lg:p-6">
-        <UsersDataTable columns={columns} data={users} />
+        <UsersDataTable
+          columns={columns}
+          data={usersData?.data as User[]}
+          isLoading={isLoading}
+        />
       </div>
       <DeleteModal
         show={showDeleteModal}

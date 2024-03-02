@@ -42,7 +42,7 @@ function Roles() {
         show={showDeleteModal}
         onClose={closeDeleteModal}
         onOk={handleDeleteRole}
-        description="This action cannot be undone. Are you sure you want to permanently delete this user?"
+        description="This action cannot be undone. Are you sure you want to permanently delete this role?"
       />
     </section>
   );

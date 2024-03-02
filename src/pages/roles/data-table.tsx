@@ -7,6 +7,7 @@ import {
   getPaginationRowModel,
   ColumnFiltersState,
   getFilteredRowModel,
+  VisibilityState,
 } from '@tanstack/react-table';
 import { useState } from 'react';
 import TableFilter from '@/components/shared/table-filter';
@@ -24,6 +25,7 @@ function RolesDataTable<TData, TValue>({
 }: Props<TData, TValue>) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
+  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
   const table = useReactTable({
     columns,
     data,
@@ -33,17 +35,22 @@ function RolesDataTable<TData, TValue>({
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
     getFilteredRowModel: getFilteredRowModel(),
+    onColumnVisibilityChange: setColumnVisibility,
     state: {
       sorting,
       columnFilters,
+      columnVisibility,
     },
   });
   return (
     <div>
+      {/* Table Data Filtering */}
       <div className="mb-4">
         <TableFilter table={table} filterKey="role" name="Role" />
       </div>
+      {/* Core Table Data Rows */}
       <Table table={table} />
+      {/* Table Data Pagination */}
       <TablePagination table={table} />
     </div>
   );
