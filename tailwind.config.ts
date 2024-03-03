@@ -6,7 +6,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        base: colors.neutral,
+        base: colors.gray,
         primary: colors.indigo,
       },
       transitionProperty: {

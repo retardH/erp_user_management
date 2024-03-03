@@ -8,17 +8,19 @@ import { useState } from 'react';
 import UsersDataTable from './data-table';
 import PageHeader from '@/components/shared/page-header';
 import { useDeleteUser, useUsers } from '@/services/api/users';
+import { useNavigate } from 'react-router';
 
 function Users() {
+  const navigate = useNavigate();
   const { data: usersData, isLoading, mutate: getUsers } = useUsers();
-  const { trigger: deleteUser } = useDeleteUser();
+  const { trigger: deleteUserById } = useDeleteUser();
   const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false);
   const [userIdToDelete, setUserIdToDelete] = useState<number>(0);
 
   const closeDeleteModal = () => setShowDeleteModal(false);
 
   const handleDeleteUser = () => {
-    deleteUser(userIdToDelete, {
+    deleteUserById(userIdToDelete, {
       onSuccess: () => {
         getUsers();
       },
@@ -48,7 +50,13 @@ function Users() {
       header: 'Role',
       accessorKey: 'roles',
       cell: ({ row }) => {
-        return <div>{row.original.roles?.name}</div>;
+        return (
+          <div>
+            {row.original.roles?.name || (
+              <span className="text-red-500">Unassigned</span>
+            )}
+          </div>
+        );
       },
     },
     {
@@ -76,7 +84,12 @@ function Users() {
         const userId = row.original.id;
         return (
           <div className="flex items-center gap-4">
-            <Button variant="outline">Edit</Button>
+            <Button
+              variant="outline"
+              onClick={() => navigate(`/users/edit/${userId}`)}
+            >
+              Edit
+            </Button>
             <Button
               variant="danger"
               onClick={() => {
@@ -94,7 +107,14 @@ function Users() {
 
   return (
     <section className="rounded-md bg-white p-4 lg:p-6">
-      <PageHeader title="User Lists" />
+      <div className="flex w-full items-center justify-between">
+        <PageHeader title="User Lists" />
+        <div className="min-w-max flex-1">
+          <Button variant="primary" onClick={() => navigate('/users/create')}>
+            Create User
+          </Button>
+        </div>
+      </div>
       <div className="mt-4 rounded-md border border-base-300/40 p-3 lg:p-6">
         <UsersDataTable
           columns={columns}

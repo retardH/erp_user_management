@@ -37,7 +37,7 @@ function CreateRole() {
         </div>
       </section>
       <div className="mt-6 flex w-full items-center justify-center">
-        <Button>Create Role</Button>
+        <Button variant="primary">Create Role</Button>
       </div>
     </div>
   );

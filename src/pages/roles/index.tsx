@@ -1,31 +1,51 @@
 import PageHeader from '@/components/shared/page-header';
 import Button from '@/components/ui/button';
-import { rolesListData } from '@/utils/data';
-import { RoleData } from '@/utils/types';
+import { Role } from '@/utils/types';
 import { ColumnDef } from '@tanstack/react-table';
 import RolesDataTable from './data-table';
 import { useState } from 'react';
 import DeleteModal from '@/components/shared/delete-modal';
+import { useDeleteRole, useRoles } from '@/services/api/roles';
+import { useNavigate } from 'react-router';
 
 function Roles() {
+  const navigate = useNavigate();
+  const { data: rolesData, isLoading, mutate: getRoles } = useRoles();
+  const { trigger: deleteRole } = useDeleteRole();
   const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false);
-  // const [roleIdToDelete, setRoleIdToDelete] = useState<string>('');
+  const [roleIdToDelete, setRoleIdToDelete] = useState<number>(0);
 
   const closeDeleteModal = () => setShowDeleteModal(false);
-  const handleDeleteRole = () => {};
 
-  const columns: ColumnDef<RoleData>[] = [
+  const handleDeleteRole = () => {
+    deleteRole(roleIdToDelete, {
+      onSuccess: () => {
+        getRoles();
+      },
+    });
+  };
+
+  const columns: ColumnDef<Role>[] = [
     {
       header: 'Role Name',
-      accessorKey: 'role',
+      accessorKey: 'name',
     },
     {
       header: 'Actions',
       id: 'Actions',
-      cell: () => {
+      cell: ({ row }) => {
+        const roleId = row.original.id;
         return (
           <div className="flex items-center gap-4">
-            <Button variant="danger">Delete</Button>
+            <Button
+              variant="danger"
+              onClick={() => {
+                setShowDeleteModal(true);
+                setRoleIdToDelete(roleId);
+              }}
+            >
+              Delete
+            </Button>
           </div>
         );
       },
@@ -34,9 +54,20 @@ function Roles() {
 
   return (
     <section className="w-full rounded-md bg-white p-4 lg:p-6">
-      <PageHeader title="Role Lists" />
+      <div className="flex items-center justify-between">
+        <PageHeader title="Role Lists" />
+        <div className="min-w-max">
+          <Button variant="primary" onClick={() => navigate('/roles/create')}>
+            Create New Role
+          </Button>
+        </div>
+      </div>
       <div className="mt-4 rounded-md border border-base-300/40 p-3 lg:p-6">
-        <RolesDataTable columns={columns} data={rolesListData} />
+        <RolesDataTable
+          columns={columns}
+          data={rolesData?.data as Role[]}
+          isLoading={isLoading}
+        />
       </div>
       <DeleteModal
         show={showDeleteModal}
