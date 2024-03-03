@@ -13,6 +13,7 @@ import { useState } from 'react';
 import TableFilter from '@/components/shared/table-filter';
 import Table from '@/components/ui/table';
 import TablePagination from '@/components/shared/table-pagination';
+import { TableSkeleton } from '@/components/ui/skeletons';
 
 interface Props<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -48,8 +49,8 @@ function RolesDataTable<TData, TValue>({
     <div>
       {!isLoading ? (
         <>
-          {/* Table Data Filtering */}
           <div className="mb-4">
+            {/* Table Data Filtering */}
             <TableFilter
               key="roles-table-filter"
               table={table}
@@ -63,7 +64,7 @@ function RolesDataTable<TData, TValue>({
           <TablePagination key="role-table-pagination" table={table} />
         </>
       ) : (
-        <h4>Data Loading</h4>
+        <TableSkeleton />
       )}
     </div>
   );

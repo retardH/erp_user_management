@@ -1,5 +1,5 @@
 import { rolesPermissions } from '@/utils/constants';
-import Checkbox from '../ui/checkbox';
+import Checkbox from '../ui/uncontrolled-checkbox';
 import Input from '../ui/input';
 import Button from '../ui/button';
 import { useState } from 'react';
@@ -53,7 +53,7 @@ function RoleForm({ isEditing = false, roleData }: Props) {
   };
   return (
     <form onSubmit={onRoleFormSubmit}>
-      <section className="mt-4 w-full overflow-x-scroll rounded-md bg-white px-6 py-10">
+      <section className="mt-4 w-full overflow-x-scroll rounded-md bg-white p-6">
         <div className="mb-8">
           <Input
             label="Row Name"
@@ -78,8 +78,8 @@ function RoleForm({ isEditing = false, roleData }: Props) {
                 </label>
                 <div className="flex items-center gap-4">
                   <Checkbox labelText="All" />
-                  {role.permissions.map((permission) => (
-                    <Checkbox key={permission} labelText={permission} />
+                  {role.actions.map((permission) => (
+                    <Checkbox key={permission.id} labelText={permission.name} />
                   ))}
                 </div>
               </div>

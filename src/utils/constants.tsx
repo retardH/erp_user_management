@@ -52,18 +52,90 @@ export const sidebarMenuItems = [
 export const rolesPermissions = [
   {
     name: 'User',
-    permissions: ['View', 'Create', 'Update', 'Delete'],
+    id: 1,
+    actions: [
+      {
+        id: 1,
+        name: 'View',
+      },
+      {
+        id: 2,
+        name: 'Create',
+      },
+      {
+        id: 3,
+        name: 'Update',
+      },
+      {
+        id: 4,
+        name: 'Delete',
+      },
+    ],
   },
   {
     name: 'Roles',
-    permissions: ['View', 'Create', 'Update', 'Delete'],
+    id: 2,
+    actions: [
+      {
+        id: 1,
+        name: 'View',
+      },
+      {
+        id: 2,
+        name: 'Create',
+      },
+      {
+        id: 3,
+        name: 'Update',
+      },
+      {
+        id: 4,
+        name: 'Delete',
+      },
+    ],
   },
   {
     name: 'Customer',
-    permissions: ['View', 'Create', 'Update', 'Delete'],
+    id: 3,
+    actions: [
+      {
+        id: 1,
+        name: 'View',
+      },
+      {
+        id: 2,
+        name: 'Create',
+      },
+      {
+        id: 3,
+        name: 'Update',
+      },
+      {
+        id: 4,
+        name: 'Delete',
+      },
+    ],
   },
   {
     name: 'Product',
-    permissions: ['View', 'Create', 'Update', 'Delete'],
+    id: 4,
+    actions: [
+      {
+        id: 1,
+        name: 'View',
+      },
+      {
+        id: 2,
+        name: 'Create',
+      },
+      {
+        id: 3,
+        name: 'Update',
+      },
+      {
+        id: 4,
+        name: 'Delete',
+      },
+    ],
   },
 ];
