@@ -5,12 +5,12 @@ import { ColumnDef } from '@tanstack/react-table';
 import RolesDataTable from './data-table';
 import { useState } from 'react';
 import DeleteModal from '@/components/shared/delete-modal';
-import { useDeleteRole, useRoles } from '@/services/api/roles';
+import { useDeleteRole, useGetRoles } from '@/services/api/roles';
 import { useNavigate } from 'react-router';
 
 function Roles() {
   const navigate = useNavigate();
-  const { data: rolesData, isLoading, mutate: getRoles } = useRoles();
+  const { data: rolesData, isLoading, mutate: getRoles } = useGetRoles();
   const { trigger: deleteRole } = useDeleteRole();
   const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false);
   const [roleIdToDelete, setRoleIdToDelete] = useState<number>(0);
@@ -25,6 +25,7 @@ function Roles() {
     });
   };
 
+  // Define columns structure for data table
   const columns: ColumnDef<Role>[] = [
     {
       header: 'Role Name',
@@ -37,6 +38,12 @@ function Roles() {
         const roleId = row.original.id;
         return (
           <div className="flex items-center gap-4">
+            <Button
+              variant="outline"
+              onClick={() => navigate(`/roles/edit/${roleId}`)}
+            >
+              Edit
+            </Button>
             <Button
               variant="danger"
               onClick={() => {
@@ -69,6 +76,7 @@ function Roles() {
           isLoading={isLoading}
         />
       </div>
+      {/* Modal dialog for deleting role */}
       <DeleteModal
         show={showDeleteModal}
         onClose={closeDeleteModal}

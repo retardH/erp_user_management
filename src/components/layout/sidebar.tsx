@@ -24,14 +24,19 @@ function Sidebar({ isOpen, setIsOpen }: Props) {
           isOpen ? 'left-0 z-40' : '-left-[90%]',
         )}
       >
-        <section className="z-20 border-r-base-300/40 px-2">
+        <section
+          className={cn(
+            'z-20 border-r-base-300/40 px-2',
+            !subMenuOpen && 'mr-4',
+          )}
+        >
           <div className="flex flex-col gap-2">
             {sidebarMenuItems.map((item) => {
               return (
                 <div
                   key={item.label}
                   className={cn(
-                    'flex cursor-pointer items-center gap-2 rounded-md px-4 py-2 text-base-700 sm:px-6',
+                    'flex cursor-pointer items-center gap-2 rounded-md px-4 py-2 text-base-700 sm:px-6 md:px-8',
                     activeMenu === item.label &&
                       'bg-primary-100 text-primary-500',
                   )}

@@ -50,12 +50,17 @@ function RolesDataTable<TData, TValue>({
         <>
           {/* Table Data Filtering */}
           <div className="mb-4">
-            <TableFilter table={table} filterKey="name" name="Role" />
+            <TableFilter
+              key="roles-table-filter"
+              table={table}
+              filterKey="name"
+              name="Role"
+            />
           </div>
           {/* Core Table Data Rows */}
           <Table table={table} />
           {/* Table Data Pagination */}
-          <TablePagination table={table} />
+          <TablePagination key="role-table-pagination" table={table} />
         </>
       ) : (
         <h4>Data Loading</h4>

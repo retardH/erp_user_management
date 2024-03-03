@@ -9,4 +9,10 @@ export const createUserFormSchema = z.object({
   roleId: z.number(),
 });
 
+export const createRoleFormSchema = z.object({
+  name: z.string().min(3).max(20),
+});
+
 export type CreateUserFormType = z.infer<typeof createUserFormSchema>;
+
+export type CreateRoleFormType = z.infer<typeof createRoleFormSchema>;

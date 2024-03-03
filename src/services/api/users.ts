@@ -1,9 +1,10 @@
 import supabase from '@/utils/supabase';
 import { User } from '@/utils/types';
+import { CreateUserFormType } from '@/utils/zod';
 import useSWR from 'swr';
 import useSWRMutation from 'swr/mutation';
 
-export const useUsers = () => {
+export const useGetUsers = () => {
   return useSWR(
     'select/users',
     async () =>
@@ -37,7 +38,7 @@ export const useDeleteUser = () => {
 export const useCreateNewUser = () => {
   return useSWRMutation(
     'create/user',
-    async (_, { arg }: { arg: Partial<User> }) => {
+    async (_, { arg }: { arg: CreateUserFormType }) => {
       await supabase.from('users').insert([arg]);
     },
   );
@@ -53,7 +54,7 @@ export const useUpdateUser = () => {
       }: {
         arg: {
           id: number;
-          updateUserData: Partial<User>;
+          updateUserData: CreateUserFormType;
         };
       },
     ) => {

@@ -7,12 +7,12 @@ import DeleteModal from '@/components/shared/delete-modal';
 import { useState } from 'react';
 import UsersDataTable from './data-table';
 import PageHeader from '@/components/shared/page-header';
-import { useDeleteUser, useUsers } from '@/services/api/users';
+import { useDeleteUser, useGetUsers } from '@/services/api/users';
 import { useNavigate } from 'react-router';
 
 function Users() {
   const navigate = useNavigate();
-  const { data: usersData, isLoading, mutate: getUsers } = useUsers();
+  const { data: usersData, isLoading, mutate: getUsers } = useGetUsers();
   const { trigger: deleteUserById } = useDeleteUser();
   const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false);
   const [userIdToDelete, setUserIdToDelete] = useState<number>(0);
@@ -27,6 +27,7 @@ function Users() {
     });
   };
 
+  // Defining columns structure for the data table
   const columns: ColumnDef<User>[] = [
     {
       accessorKey: 'username',
@@ -122,6 +123,7 @@ function Users() {
           isLoading={isLoading}
         />
       </div>
+      {/* Modal dialog for deleting user */}
       <DeleteModal
         show={showDeleteModal}
         onClose={closeDeleteModal}

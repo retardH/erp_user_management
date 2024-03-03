@@ -7,6 +7,7 @@ import CreateUser from '@/pages/create-user';
 import Roles from '@/pages/roles';
 import CreateRole from '@/pages/create-role';
 import Login from '@/pages/login';
+import EditRole from '@/pages/edit-role';
 
 const routes = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const routes = createBrowserRouter([
       {
         path: '/roles/create',
         element: <CreateRole />,
+      },
+      {
+        path: '/roles/edit/:id',
+        element: <EditRole />,
       },
     ],
   },

@@ -48,3 +48,22 @@ export const sidebarMenuItems = [
     ],
   },
 ];
+
+export const rolesPermissions = [
+  {
+    name: 'User',
+    permissions: ['View', 'Create', 'Update', 'Delete'],
+  },
+  {
+    name: 'Roles',
+    permissions: ['View', 'Create', 'Update', 'Delete'],
+  },
+  {
+    name: 'Customer',
+    permissions: ['View', 'Create', 'Update', 'Delete'],
+  },
+  {
+    name: 'Product',
+    permissions: ['View', 'Create', 'Update', 'Delete'],
+  },
+];

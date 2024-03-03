@@ -1,9 +1,9 @@
 import PageHeader from '@/components/shared/page-header';
 import UserForm from '@/components/shared/user-form';
-import { useRoles } from '@/services/api/roles';
+import { useGetRoles } from '@/services/api/roles';
 
 function CreateUser() {
-  const { data: rolesData } = useRoles();
+  const { data: rolesData } = useGetRoles();
 
   return (
     <div className="mb-10 w-full p-4 lg:p-0">
