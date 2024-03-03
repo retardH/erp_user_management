@@ -20,6 +20,11 @@ export type User = {
   };
 };
 
+export type Role = {
+  id: number;
+  name: string;
+};
+
 export type RoleData = {
   role: string;
 };

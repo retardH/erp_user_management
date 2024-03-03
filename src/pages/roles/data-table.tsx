@@ -17,11 +17,13 @@ import TablePagination from '@/components/shared/table-pagination';
 interface Props<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
+  isLoading: boolean;
 }
 
 function RolesDataTable<TData, TValue>({
   columns,
   data,
+  isLoading,
 }: Props<TData, TValue>) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
@@ -44,14 +46,25 @@ function RolesDataTable<TData, TValue>({
   });
   return (
     <div>
-      {/* Table Data Filtering */}
-      <div className="mb-4">
-        <TableFilter table={table} filterKey="role" name="Role" />
-      </div>
-      {/* Core Table Data Rows */}
-      <Table table={table} />
-      {/* Table Data Pagination */}
-      <TablePagination table={table} />
+      {!isLoading ? (
+        <>
+          {/* Table Data Filtering */}
+          <div className="mb-4">
+            <TableFilter
+              key="roles-table-filter"
+              table={table}
+              filterKey="name"
+              name="Role"
+            />
+          </div>
+          {/* Core Table Data Rows */}
+          <Table table={table} />
+          {/* Table Data Pagination */}
+          <TablePagination key="role-table-pagination" table={table} />
+        </>
+      ) : (
+        <h4>Data Loading</h4>
+      )}
     </div>
   );
 }

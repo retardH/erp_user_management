@@ -17,7 +17,7 @@ function TablePagination<TData>({ table }: Props<TData>) {
         <Button
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
-          className="border border-base-400/30 bg-white px-2 py-1 transition-all hover:bg-base-100 md:px-3 md:py-1.5"
+          className="border border-base-400/30 bg-white px-2 py-1 transition-all hover:bg-base-100 disabled:cursor-not-allowed md:px-3 md:py-1.5"
         >
           <ChevronLeftIcon className="size-[24px] text-base-800" />
         </Button>
@@ -25,7 +25,7 @@ function TablePagination<TData>({ table }: Props<TData>) {
         <Button
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
-          className="border border-base-400/30 bg-white px-2 py-1 transition-all hover:bg-base-100 md:px-3 md:py-1.5"
+          className="border border-base-400/30 bg-white px-2 py-1 transition-all hover:bg-base-100 disabled:cursor-not-allowed md:px-3 md:py-1.5"
         >
           <ChevronRightIcon className="size-[24px] text-base-800" />
         </Button>

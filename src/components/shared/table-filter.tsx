@@ -14,6 +14,7 @@ interface Props<TData> {
   filterKey: string;
   name: string;
 }
+
 function TableFilter<TData>({ table, filterKey, name }: Props<TData>) {
   return (
     <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center md:gap-0">
@@ -30,10 +31,10 @@ function TableFilter<TData>({ table, filterKey, name }: Props<TData>) {
       <div className="flex items-center gap-4">
         <Menu as="div" className="relative inline-block text-left">
           <div>
-            <Menu.Button className="inline-flex w-full justify-center rounded-md border border-base-400/50 bg-base-100/50 px-4 py-2 text-sm font-medium text-base-700 hover:bg-base-200/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75">
+            <Menu.Button className="inline-flex w-full items-center justify-center rounded-md border border-base-400/50 bg-base-100/50 px-4 py-2 text-sm text-base-600 hover:bg-base-200/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75">
               Columns
               <ChevronDownIcon
-                className="-mr-1 ml-2 h-5 w-5 text-base-800"
+                className="-mr-1 ml-1 size-4 text-base-800"
                 aria-hidden="true"
               />
             </Menu.Button>

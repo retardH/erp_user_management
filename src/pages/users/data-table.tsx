@@ -50,12 +50,17 @@ function UsersDataTable<TData, TValue>({
         <>
           {/* Table Data Filtering */}
           <div className="mb-4">
-            <TableFilter table={table} filterKey="username" name="User" />
+            <TableFilter
+              key="users-table-filter"
+              table={table}
+              filterKey="username"
+              name="User"
+            />
           </div>
           {/* Core Table Data Rows */}
           <Table table={table} />
           {/* Table Data Pagination */}
-          <TablePagination table={table} />
+          <TablePagination key="users-table-pagination" table={table} />
         </>
       ) : (
         <h4>Data Loading...</h4>

@@ -19,11 +19,11 @@ function Button({
       type={type}
       {...buttonProps}
       className={cn(
-        'box-border flex items-center justify-center gap-1.5 rounded-md px-3 py-1.5 text-center text-sm text-white transition-all md:px-5 md:py-2',
+        'box-border flex items-center justify-center gap-1.5 rounded-md px-3 py-1.5 text-center text-sm text-white transition-all disabled:cursor-not-allowed',
         variant === 'primary' &&
-          'border border-primary-500 bg-primary-500 hover:bg-primary-700',
+          'border border-primary-500 bg-primary-500 hover:bg-primary-600',
         variant === 'danger' && 'bg-red-500 hover:bg-red-600',
-        variant === 'success' && 'bg-green-500 hover:bg-green-700',
+        variant === 'success' && 'bg-green-500 hover:bg-green-600',
         variant === 'outline' &&
           'border border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white',
         buttonProps.className,

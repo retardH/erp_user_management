@@ -5,7 +5,7 @@ import { useState } from 'react';
 function MainLayout() {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
   return (
-    <div className="relative bg-base-100">
+    <div className="relative min-h-screen bg-base-100">
       <Header setSidebarOpen={setSidebarOpen} />
       <div className="h-full lg:flex">
         <Sidebar isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />
