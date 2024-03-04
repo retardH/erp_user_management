@@ -52,90 +52,109 @@ export const sidebarMenuItems = [
 export const rolesPermissions = [
   {
     name: 'User',
-    id: 1,
+    id: '1',
     actions: [
       {
-        id: 1,
+        id: '11',
         name: 'View',
       },
       {
-        id: 2,
+        id: '12',
         name: 'Create',
       },
       {
-        id: 3,
+        id: '13',
         name: 'Update',
       },
       {
-        id: 4,
+        id: '14',
         name: 'Delete',
       },
     ],
   },
   {
     name: 'Roles',
-    id: 2,
+    id: '2',
     actions: [
       {
-        id: 1,
+        id: '21',
         name: 'View',
       },
       {
-        id: 2,
+        id: '22',
         name: 'Create',
       },
       {
-        id: 3,
+        id: '23',
         name: 'Update',
       },
       {
-        id: 4,
+        id: '24',
         name: 'Delete',
       },
     ],
   },
   {
     name: 'Customer',
-    id: 3,
+    id: '3',
     actions: [
       {
-        id: 1,
+        id: '31',
         name: 'View',
       },
       {
-        id: 2,
+        id: '32',
         name: 'Create',
       },
       {
-        id: 3,
+        id: '33',
         name: 'Update',
       },
       {
-        id: 4,
+        id: '34',
         name: 'Delete',
       },
     ],
   },
   {
     name: 'Product',
-    id: 4,
+    id: '4',
     actions: [
       {
-        id: 1,
+        id: '41',
         name: 'View',
       },
       {
-        id: 2,
+        id: '42',
         name: 'Create',
       },
       {
-        id: 3,
+        id: '43',
         name: 'Update',
       },
       {
-        id: 4,
+        id: '44',
         name: 'Delete',
       },
     ],
   },
+];
+
+export const rolePermissionsIds = [
+  '11',
+  '12',
+  '13',
+  '14',
+  '21',
+  '22',
+  '23',
+  '24',
+  '31',
+  '32',
+  '33',
+  '34',
+  '41',
+  '42',
+  '43',
+  '44',
 ];
