@@ -1,12 +1,3 @@
-export type UserData = {
-  firstName: string;
-  lastName?: string;
-  username: string;
-  email: string;
-  role: string;
-  isActive: boolean;
-};
-
 export type User = {
   id: number;
   firstName: string;
@@ -23,8 +14,4 @@ export type User = {
 export type Role = {
   id: number;
   name: string;
-};
-
-export type RoleData = {
-  role: string;
 };

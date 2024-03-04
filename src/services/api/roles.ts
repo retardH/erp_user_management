@@ -1,5 +1,6 @@
 import supabase from '@/utils/supabase';
 import { Role } from '@/utils/types';
+import { CreateRoleFormType } from '@/utils/zod';
 import useSWR from 'swr';
 import useSWRMutation from 'swr/mutation';
 
@@ -33,7 +34,7 @@ export const useDeleteRole = () => {
 export const useCreateNewRole = () => {
   return useSWRMutation(
     'create/role',
-    async (_, { arg }: { arg: Partial<Role> }) => {
+    async (_, { arg }: { arg: CreateRoleFormType }) => {
       return await supabase.from('roles').insert([arg]);
     },
   );
@@ -42,7 +43,10 @@ export const useCreateNewRole = () => {
 export const useUpdateRole = () => {
   return useSWRMutation(
     'update/role',
-    async (_, { arg }: { arg: { id: number; updateData: Partial<Role> } }) => {
+    async (
+      _,
+      { arg }: { arg: { id: number; updateData: CreateRoleFormType } },
+    ) => {
       return await supabase
         .from('roles')
         .update(arg.updateData)
