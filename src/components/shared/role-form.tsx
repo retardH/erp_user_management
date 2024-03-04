@@ -1,5 +1,5 @@
-import { rolesPermissions } from '@/utils/constants';
-import Checkbox from '../ui/uncontrolled-checkbox';
+import { rolePermissionsIds, rolesPermissions } from '@/utils/constants';
+import Checkbox from '../ui/checkbox';
 import Input from '../ui/input';
 import Button from '../ui/button';
 import { useState } from 'react';
@@ -7,6 +7,7 @@ import { CreateRoleFormType, createRoleFormSchema } from '@/utils/zod';
 import { useCreateNewRole, useUpdateRole } from '@/services/api/roles';
 import { Role } from '@/utils/types';
 import { useNavigate } from 'react-router';
+import { toast } from 'react-hot-toast';
 
 interface Props {
   isEditing?: boolean;
@@ -21,6 +22,7 @@ function RoleForm({ isEditing = false, roleData }: Props) {
   const [roleFormData, setRoleFormData] = useState<CreateRoleFormType>({
     name: roleData?.name || '',
   });
+  const [roleActionsIds, setRoleActionsIds] = useState<string[]>([]);
 
   const handleRoleFormChange = (key: string, value: any) => {
     setRoleFormData((prevVal) => ({ ...prevVal, [key]: value }));
@@ -28,12 +30,17 @@ function RoleForm({ isEditing = false, roleData }: Props) {
 
   const onRoleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Check if role form data pass the schema validation
     const result = createRoleFormSchema.safeParse(roleFormData);
-    console.log(roleFormData);
+
+    // The function exits if the schema validation fails
     if (!result.success) {
-      console.error('Validation fails');
+      toast.error('Please fill out the form correctly');
       return;
     }
+
+    // Update role or create new role base on isEditing prop, navigate to the /roles route on successful mutation
     if (isEditing && roleData) {
       updateRoleById(
         { id: roleData.id as number, updateData: result.data },
@@ -68,7 +75,19 @@ function RoleForm({ isEditing = false, roleData }: Props) {
             <label className="min-w-[140px] font-medium text-base-700 lg:min-w-[200px]">
               Administrator Access
             </label>
-            <Checkbox labelText="All" />
+            <Checkbox
+              labelText="All"
+              checked={rolePermissionsIds.every((id) =>
+                roleActionsIds.includes(id),
+              )}
+              onChange={(e) => {
+                if (e.target.checked) {
+                  setRoleActionsIds([...rolePermissionsIds]);
+                } else {
+                  setRoleActionsIds([]);
+                }
+              }}
+            />
           </div>
           {rolesPermissions.map((role) => {
             return (
@@ -77,9 +96,55 @@ function RoleForm({ isEditing = false, roleData }: Props) {
                   {role.name}
                 </label>
                 <div className="flex items-center gap-4">
-                  <Checkbox labelText="All" />
+                  <Checkbox
+                    labelText="All"
+                    checked={role.actions.every((action) =>
+                      roleActionsIds.includes(action.id),
+                    )}
+                    onChange={(e) => {
+                      const ids = role.actions.map((action) => action.id);
+                      if (e.target.checked) {
+                        setRoleActionsIds(() => {
+                          return [
+                            ...roleActionsIds.filter((id) => !ids.includes(id)),
+                            ...ids,
+                          ];
+                        });
+                      } else {
+                        setRoleActionsIds(() => {
+                          return [
+                            ...roleActionsIds.filter((id) => !ids.includes(id)),
+                          ];
+                        });
+                      }
+                    }}
+                  />
                   {role.actions.map((permission) => (
-                    <Checkbox key={permission.id} labelText={permission.name} />
+                    <Checkbox
+                      key={permission.id}
+                      labelText={permission.name}
+                      checked={roleActionsIds.includes(permission.id)}
+                      onChange={(e) => {
+                        if (e.target.checked) {
+                          setRoleActionsIds(() => {
+                            return [
+                              ...roleActionsIds.filter(
+                                (id) => id !== permission.id,
+                              ),
+                              permission.id,
+                            ];
+                          });
+                        } else {
+                          setRoleActionsIds(() => {
+                            return [
+                              ...roleActionsIds.filter(
+                                (id) => id !== permission.id,
+                              ),
+                            ];
+                          });
+                        }
+                      }}
+                    />
                   ))}
                 </div>
               </div>

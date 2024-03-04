@@ -23,15 +23,6 @@ const loginSliderInfo = [
   },
 ];
 
-const settings = {
-  dots: true,
-  infinite: true,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  autoplay: true,
-  pauseOnHover: false,
-};
-
 const loginFormItems = [
   {
     name: 'username',
@@ -43,6 +34,15 @@ const loginFormItems = [
     type: 'password',
   },
 ];
+
+const settings = {
+  dots: true,
+  infinite: true,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  autoplay: true,
+  pauseOnHover: false,
+};
 
 function Login() {
   return (

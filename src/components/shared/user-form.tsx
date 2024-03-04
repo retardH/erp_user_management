@@ -7,6 +7,7 @@ import { Role, User } from '@/utils/types';
 import { CreateUserFormType, createUserFormSchema } from '@/utils/zod';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
+import { toast } from 'react-hot-toast';
 
 interface Props {
   roles: Role[] | null | undefined;
@@ -52,7 +53,7 @@ function UserForm({ roles, userData, isEditing = false }: Props) {
 
     // The function exits if the schema validation fails
     if (!result.success) {
-      console.log('validation error');
+      toast.error('Please fill out the form correctly');
       return;
     }
 

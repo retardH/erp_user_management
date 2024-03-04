@@ -15,7 +15,7 @@ function EditRole() {
           <RoleFormSkeleton />
         </div>
       ) : (
-        <RoleForm isEditing roleData={roleData?.data} />
+        <RoleForm key={id} isEditing roleData={roleData?.data} />
       )}
     </div>
   );

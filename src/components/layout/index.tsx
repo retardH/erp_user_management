@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom';
 import Sidebar from './sidebar';
 import Header from './header';
 import { useState } from 'react';
+import { Toaster } from 'react-hot-toast';
 function MainLayout() {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
   return (
@@ -13,6 +14,7 @@ function MainLayout() {
           <Outlet />
         </div>
       </div>
+      <Toaster />
     </div>
   );
 }
