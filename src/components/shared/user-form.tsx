@@ -52,6 +52,7 @@ function UserForm({ roles, userData, isEditing = false }: Props) {
     const result = createUserFormSchema.safeParse(userFormData);
 
     // The function exits if the schema validation fails
+    console.log(result);
     if (!result.success) {
       toast.error('Please fill out the form correctly');
       return;
