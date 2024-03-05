@@ -47,7 +47,7 @@ function UsersDataTable<TData, TValue>({
   });
   return (
     <div>
-      {!isLoading ? (
+      {!isLoading && data ? (
         <>
           <div className="mb-4">
             {/* Table Data Filtering */}
