@@ -8,7 +8,7 @@ import Roles from '@/pages/roles';
 import CreateRole from '@/pages/create-role';
 import Login from '@/pages/login';
 import EditRole from '@/pages/edit-role';
-import Tiptap from '@/components/shared/tiptap-editor';
+import Editor from '@/pages/editor';
 
 const routes = createBrowserRouter([
   {
@@ -45,7 +45,7 @@ const routes = createBrowserRouter([
       },
       {
         path: '/editor',
-        element: <Tiptap />,
+        element: <Editor />,
       },
     ],
   },

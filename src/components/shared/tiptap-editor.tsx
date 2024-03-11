@@ -54,7 +54,7 @@ const Tiptap = () => {
   return (
     <>
       <EditorContent editor={editor}></EditorContent>
-      <FloatingMenu editor={editor!} className="bg-base-300 p-2">
+      <FloatingMenu editor={editor} className="bg-base-300 p-2">
         <button
           className="rounded-md bg-emerald-400 p-1"
           onClick={handleInsertImageButtonClick}
@@ -62,7 +62,7 @@ const Tiptap = () => {
           Add Img
         </button>
       </FloatingMenu>
-      <BubbleMenu editor={editor!} className="bg-base-600 p-2">
+      <BubbleMenu editor={editor} className="bg-base-600 p-2">
         <button
           className="rounded-md bg-pink-500 p-1"
           onClick={handleBoldButtonClick}
